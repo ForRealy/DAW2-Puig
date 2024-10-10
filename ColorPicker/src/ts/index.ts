@@ -5,6 +5,12 @@ function changeTheme(theme: string) {
     case 'black':
       themeLink.href = './src/css/black.css'; 
       break;
+      case 'red':
+      themeLink.href = './src/css/red.css'; 
+      break;
+      case 'blue':
+      themeLink.href = './src/css/blue.css'; 
+      break;
     default:
       themeLink.href = './src/css/style.css'; 
       break;

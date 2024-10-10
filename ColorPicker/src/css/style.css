@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    
+
     display: flex;
 }
 .first{
@@ -38,7 +38,7 @@ button{
     border-radius: 10%;
     
     color: white;
-    background-color: green;
+    background-color: mediumseagreen;
 }
 #red {
  background-color: red;
@@ -49,6 +49,6 @@ button{
 #black{
     background-color: black;
 }
-#yellow{
-    background-color: yellow;
+#green{
+    background-color: green;
 }

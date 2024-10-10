@@ -6,19 +6,15 @@ function changeTheme(theme: string) {
   switch (theme) {
     case 'black':
       helpDiv.style.backgroundColor = 'black';
-      helpDiv.style.color = 'white';
       break;
     case 'red':
       helpDiv.style.backgroundColor = 'red';
-      helpDiv.style.color = 'white';
       break;
     case 'blue':
       helpDiv.style.backgroundColor = 'blue';
-      helpDiv.style.color = 'white';
       break;
     default:
-      helpDiv.style.backgroundColor = 'yellow';
-      helpDiv.style.color = 'black';
+      helpDiv.style.backgroundColor = 'green';
       break;
   }
 }

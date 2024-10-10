@@ -1,3 +1,4 @@
+//Cambiar color de fondo
 function changeTheme(theme: string) {
   const themeLink = document.getElementById('style') as HTMLLinkElement;
   switch (theme) {
@@ -9,14 +10,11 @@ function changeTheme(theme: string) {
       break;
   }
 }
+//Detectar boton name
 const themeButtons = document.querySelectorAll<HTMLButtonElement>('button[name="theme"]');
 
 themeButtons.forEach((button) => {
   button.addEventListener('click', () => {
     changeTheme(button.value); 
   });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  changeTheme('index');
 });

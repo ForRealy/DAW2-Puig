@@ -10,10 +10,12 @@ function changeTheme(theme) {
             break;
     }
 }
-const themeRadios = document.querySelectorAll('input[name="theme"]');
-themeRadios.forEach((radio) => {
-    radio.addEventListener('change', (event) => {
-        const target = event.target;
-        changeTheme(target.value);
+const themeButtons = document.querySelectorAll('button[name="theme"]');
+themeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        changeTheme(button.value);
     });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    changeTheme('index');
 });

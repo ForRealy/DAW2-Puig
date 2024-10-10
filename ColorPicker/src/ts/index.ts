@@ -1,26 +1,34 @@
-//Cambiar color de fondo
+// Función para cambiar el tema mediante estilos en línea
 function changeTheme(theme: string) {
-  const themeLink = document.getElementById('style') as HTMLLinkElement;
+  const helpDiv = document.getElementById('help') as HTMLDivElement; // Obtener el <div> con id 'help'
+  
+  // Aplicar estilos según el tema seleccionado
   switch (theme) {
     case 'black':
-      themeLink.href = './src/css/black.css'; 
+      helpDiv.style.backgroundColor = 'black';
+      helpDiv.style.color = 'white';
       break;
-      case 'red':
-      themeLink.href = './src/css/red.css'; 
+    case 'red':
+      helpDiv.style.backgroundColor = 'red';
+      helpDiv.style.color = 'white';
       break;
-      case 'blue':
-      themeLink.href = './src/css/blue.css'; 
+    case 'blue':
+      helpDiv.style.backgroundColor = 'blue';
+      helpDiv.style.color = 'white';
       break;
     default:
-      themeLink.href = './src/css/style.css'; 
+      helpDiv.style.backgroundColor = 'yellow';
+      helpDiv.style.color = 'black';
       break;
   }
 }
-//Detectar boton name
+
+// Detectar botones con el atributo name igual a "theme"
 const themeButtons = document.querySelectorAll<HTMLButtonElement>('button[name="theme"]');
 
+// Agregar un evento de clic a cada botón de tema
 themeButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    changeTheme(button.value); 
+    changeTheme(button.value); // Llamar a la función para cambiar el tema
   });
 });

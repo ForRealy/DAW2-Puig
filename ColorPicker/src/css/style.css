@@ -41,14 +41,14 @@ button{
     background-color: mediumseagreen;
 }
 #red {
- background-color: red;
+ background-color: #f44336;
 }
 #blue{
-    background-color: blue;
+    background-color: #2196f3;
 }
 #black{
-    background-color: black;
+    background-color: #607d8b;
 }
 #green{
-    background-color: green;
+    background-color: #8bc34a;
 }

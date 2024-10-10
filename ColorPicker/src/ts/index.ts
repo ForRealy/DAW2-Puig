@@ -5,16 +5,16 @@ function changeTheme(theme: string) {
   // Aplicar estilos según el tema seleccionado
   switch (theme) {
     case 'black':
-      helpDiv.style.backgroundColor = 'black';
+      helpDiv.style.backgroundColor = '#607d8b';
       break;
     case 'red':
-      helpDiv.style.backgroundColor = 'red';
+      helpDiv.style.backgroundColor = '#f44336';
       break;
     case 'blue':
-      helpDiv.style.backgroundColor = 'blue';
+      helpDiv.style.backgroundColor = '#2196f3';
       break;
     default:
-      helpDiv.style.backgroundColor = 'green';
+      helpDiv.style.backgroundColor = '#8bc34a';
       break;
   }
 }

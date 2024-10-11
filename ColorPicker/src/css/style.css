@@ -43,12 +43,24 @@ button{
 #red {
  background-color: #f44336;
 }
+#red:hover {
+    background-color: #e53935;
+   }
 #blue{
     background-color: #2196f3;
+}
+#blue:hover{
+    background-color: #1e88e5;
 }
 #black{
     background-color: #607d8b;
 }
+#black:hover{
+    background-color: #546e7a;
+}
 #green{
     background-color: #8bc34a;
+}
+#green:hover{
+    background-color: #7cb342;
 }

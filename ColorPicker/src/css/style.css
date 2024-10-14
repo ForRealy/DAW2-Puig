@@ -46,11 +46,17 @@ button{
 #red:hover {
     background-color: #e53935;
    }
+#red:active {
+    background-color: #d32f2f;
+}
 #blue{
     background-color: #2196f3;
 }
 #blue:hover{
     background-color: #1e88e5;
+}
+#blue:active {
+    background-color: #0288d1;
 }
 #black{
     background-color: #607d8b;
@@ -58,9 +64,15 @@ button{
 #black:hover{
     background-color: #546e7a;
 }
+#black:active {
+    background-color: #455a64;
+}
 #green{
     background-color: #8bc34a;
 }
 #green:hover{
     background-color: #7cb342;
+}
+#green:active {
+    background-color: #689f38;
 }

@@ -5,3 +5,5 @@ portfolio.local/vendor
 portfolio.local/composer.lock
 
 ColorPicker/node_modules
+
+SintaxiTypescript/node_modules

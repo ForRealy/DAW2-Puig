@@ -1,3 +1,4 @@
+```
 const maxVisits:number = 2; //Variable let para el maximo de visitas
 const pageName:String = "Mi Pagina"; //Variable const para el nombre de la pagina
 var visitCount:number = 0; //Variable var para el contador de visitas
@@ -21,3 +22,4 @@ Para solucionar el error de las variables eh creado un tipo de archivo .md
 para guardar los ejercicios que voy haciendo poco a poco y no tener
 esa clase de errores 
 */
+```

@@ -1,23 +1,15 @@
-const maxVisits:number = 2; //Variable let para el maximo de visitas
-const pageName:String = "Mi Pagina"; //Variable const para el nombre de la pagina
-var visitCount:number = 0; //Variable var para el contador de visitas
-let welcomeMesagge:String = "Bienvenido"; //Variable let para mensaje de bienvenida
+let money:number = Number(prompt("Dinero disponible:"));
 
-/*
-Creamos un bucle dowhile donde la condicion es que visitCount
-sea menor a maxVisits
-*/
+let productQuest:String = String(prompt(
+    "Quieres introducir un producto? Responde con Si o No:"));
 
-do { 
-    visitCount++; //Sumamos 1 a visitCount cuando se inicia el bucle
-    console.log(welcomeMesagge); //Imprimimos welcomeMesagge por consola
-} while (visitCount < maxVisits); // repetimos el bucle
-
-welcomeMesagge = "error"; // Cambiamos el contenido de welcomeMesagge al salir del bucle
-console.log(welcomeMesagge); //Imprimimos welcomeMesagge por consola
-
-/*
-Para solucionar el error de las variables eh creado un tipo de archivo .md
-para guardar los ejercicios que voy haciendo poco a poco y no tener
-esa clase de errores 
-*/
+if (productQuest == "Si" || productQuest == "si"){
+do {
+    var productName:number = Number(prompt("Nombre del producto:"));
+    var productSale:number = Number(prompt("Nombre del producto:"));
+    var productNum:number = Number(prompt("Nombre del producto:"));
+    var again:String = String((prompt("Nombre del producto:")));
+} while (again == "Si" || again == "si");
+}else if (productQuest == "No" || productQuest == "no"){
+    alert("Gracias, adios");
+}else alert("Error");

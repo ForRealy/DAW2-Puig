@@ -1,3 +1,4 @@
+```
 let money:number = Number(prompt("Dinero disponible:")); //Variable let para el dinero que tenemos
 
 if (isNaN(money) || money < 0) { // Comprovacion de que el dinero sea un numero
@@ -36,3 +37,5 @@ if (productSale * productNum <= money){ // Comprovacion si la operacion es valid
 }else alert("Error"); //Condicional para mostrar error
 }
 
+
+```

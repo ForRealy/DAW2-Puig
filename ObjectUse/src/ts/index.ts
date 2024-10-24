@@ -1,29 +1,21 @@
-function diaDeLaSetmana() {
-  // Recojer el valor del input con id "data"
-  var inputValue = (<HTMLInputElement>document.getElementById('data')).value,
+function modificarBom() {
+  // Recojer el valor del input con id "name"
+  let inputValue = (<HTMLInputElement>document.getElementById('name')).value;
   
-  // Expresion regular para comprovar la fecha
-  regex = new RegExp(/^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/),
-  
-  // Comprobar que el contenido del input es correcto
-  test = regex.test(inputValue);
-  console.log(test);
-  
-  // Condicionnal para sacar el dia de la semana
-  // Se inicia si la comprovacion es positiva
-  if (test) {
-    //Divido el array en / para que lo lea el date
-    let parts = inputValue.split('/');
+  // Crear bucle para abrir ventanas
+  let repeat:number = 0;
+  do {
+    repeat++
+    // Abrimos en una ventana nueva con window.open y _blank
+    let vent = window.open('',
+                '', 
+                'width=300,height=300,');
+    let color:string = Math.floor(Math.random()*16777215).toString(16)
+    
+    vent?.document.body.style.backgroundColor = "#" + color;
+    const p = document.createElement("p");
+    p.textContent = inputValue;
+    vent?.document.body.appendChild(p);
+  }while(repeat < 5)
 
-    // Le damos el formato que queremos para que lo lea el date dd/mm/yyyy
-    let formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
-
-    // Instanciamos el date y le damos nuestra fecha
-    let date = new Date(formattedDate);
-
-    // Le pedimos el dia de la semana con getDay y lo sacamos por consola
-    let weekDay = date.getDay();
-    console.log(weekDay);
-  }
 }
-

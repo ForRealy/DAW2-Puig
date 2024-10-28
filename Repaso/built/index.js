@@ -1,12 +1,10 @@
 "use strict";
-// Calcula si el parametro "doble" es divisible por 4
-function clic() {
-    // Recoje el valor del parametro y se transforma en int para manipularlo
-    let doble = parseInt(document.getElementById("text").value);
-    // Condicional para comprobar si es divisible
-    if (doble % 4 == 0) {
-        console.log("Es divisible");
+let i;
+let a = "a";
+for (i = 0; i <= 10; i++) {
+    if (a) {
+        console.log(a.toUpperCase);
     }
     else
-        console.log("No es divisible");
+        console.log(a.toLowerCase);
 }

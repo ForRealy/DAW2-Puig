@@ -3,6 +3,9 @@ function clic () {
     // Recoje el valor del parametro con la id "text"
     let doble:string = ((document.getElementById("text") as HTMLInputElement).value);
     
+    // Variable donde añadiremos el resultado con mayusculas intercaladas
+    let news:String = "";
+
     // Mide el tamaño de la variable doble y lo imprime
     let lenght:number = doble.length;
     console.log(lenght);
@@ -13,19 +16,16 @@ function clic () {
     }else 
     console.log("No es divisible");
 
+    // Bucle para añadir parametros al string
     let i:number;
     for (i = 0; i <= lenght; i++) {
         
-        if (doble.charAt(i) == "a") {
-            console.log(doble.charAt(i).toUpperCase());
-            doble.toUpperCase;
-            
-        } else if (doble.charAt(i) == "s") {
-            console.log(doble.toLowerCase());
-
-        }
-
+        // Calculas si es par o impar
+        if (i % 2 == 0) {
+            // Añades el caracter en posicion i en mayuscula si es impar
+            news = news + doble.charAt(i).toUpperCase();
+            // Sñades el caracter en posicion i en minuscula si es par
+        } else  news = news + doble.charAt(i).toLowerCase();
     }
-    
-
+    console.log(news);
 }

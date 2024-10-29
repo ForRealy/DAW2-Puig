@@ -1,15 +1,24 @@
-var i; // Variable para el bucle
-var a = "a"; // Variable para hacer manipular
-// Repetimos 10 veces el bucle (empieza en 0)
-for (i = 0; i <= 9; i++) {
-    // Si es minuscula transformamos a mayuscula y guardamos la variable
-    if (a == "a") {
-        console.log(a.toUpperCase());
-        a = "A";
-        // Si es mayuscula transformamos a minuscula y guardamos la variable
+// Calcula si el parametro "doble" es divisible por 4
+function clic() {
+    // Recoje el valor del parametro con la id "text"
+    var doble = (document.getElementById("text").value);
+    // Mide el tamaño de la variable doble y lo imprime
+    var lenght = doble.length;
+    console.log(lenght);
+    // Condicional para comprobar si es divisible
+    if (lenght % 4 == 0) {
+        console.log("Es divisible");
     }
-    else if (a == "A") {
-        console.log(a.toLowerCase());
-        a = "a";
+    else
+        console.log("No es divisible");
+    var i;
+    for (i = 0; i <= lenght; i++) {
+        if (doble.charAt(i) == "a") {
+            console.log(doble.charAt(i).toUpperCase());
+            doble.toUpperCase;
+        }
+        else if (doble.charAt(i) == "s") {
+            console.log(doble.toLowerCase());
+        }
     }
 }

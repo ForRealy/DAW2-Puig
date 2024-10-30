@@ -18,7 +18,7 @@ function clic() {
         if (i % 2 == 0) {
             // Añades el caracter en posicion i en mayuscula si es impar
             news = news + doble.charAt(i).toUpperCase();
-            // Sñades el caracter en posicion i en minuscula si es par
+            // Añades el caracter en posicion i en minuscula si es par
         }
         else
             news = news + doble.charAt(i).toLowerCase();

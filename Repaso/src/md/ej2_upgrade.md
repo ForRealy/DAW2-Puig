@@ -1,3 +1,4 @@
+```
 let i: number; // Variable para el bucle
 let a: string = "b"; // Variable para hacer manipular
 
@@ -10,3 +11,4 @@ for (i = 0; i <= 9; i++) {
     // Cuando sea par lo transformamos en minuscula
   } else console.log(a.toLowerCase());
 }
+```

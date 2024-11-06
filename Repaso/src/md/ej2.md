@@ -1,4 +1,4 @@
-´´´
+```
 let i: number; // Variable para el bucle
 let a: string = "a"; // Variable para hacer manipular
 
@@ -16,4 +16,4 @@ for (i = 0; i <= 9; i++) {
         a = "a";
     }
 }
-´´´
+```

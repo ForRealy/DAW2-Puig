@@ -1,4 +1,4 @@
-´´´
+```
 function operacionTexto() {
   // Variable declarada para guardar el string mas tarde
   let alternate: string = "";
@@ -34,4 +34,4 @@ function operacionTexto() {
     }
   }
 }
-´´´
+```

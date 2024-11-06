@@ -1,3 +1,4 @@
+```
 // Calcula si el parametro "doble" es divisible por 4
 function clic () {
   // Recoje el valor del parametro con la id "text"
@@ -27,3 +28,4 @@ function clic () {
   }
   console.log(news);
 }
+```

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./dist/index.js"></script>
+</head>
+<body>
+    <!--Apartado categorias-->
+    <label for="categoriaInput">Afegir categoria:</label>
+    <input type="text" id="categoriaInput"><br>
+    
+    <button onclick="afegirCategoria()">Afegir Categoria</button>
+    <button onclick="mostrarCategories()">Mostrar Categories</button><br>
+    
+    <!--Apartado Productos-->
+    <label for="productoInput">Afegir Producte:</label>
+    <input type="text" id="productoInput">
+    <label for="productoInput">Afegir Stock:</label>
+    <input type="text" id="stockInput"> <br>
+    
+    <button onclick="afegirProducte()">Afegir Producte</button>
+    <button onclick="eliminarProducte()">Eliminar Producte</button>
+    <button onclick="mostrarProducte()">Mostrar Producte</button>
+
+    <p id="llistaCategories"></p>
+    <p id="llistaProductes"></p>
+</body>
+</html>

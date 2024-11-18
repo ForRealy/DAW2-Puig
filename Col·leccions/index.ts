@@ -1,6 +1,7 @@
 let categories: Set<string> = new Set<string>();
 let products: Set<string> = new Set<string>();
 let stock: Map<string, number> = new Map();
+let sales: Map<string, number> = new Map();
 
 /**
  * Section de categorias
@@ -28,16 +29,21 @@ function mostrarCategories() {
  */
 function afegirProducte() {
     let productName: string = (<HTMLInputElement>document.getElementById("productoInput")).value;
-    let productStock: number = parseInt((<HTMLInputElement>document.getElementById("stockInput")).value, 10); // parse as number
-    
-    if (!isNaN(productStock)) {
-        products.add(productName);
-        stock.set(productName, productStock);
- 
+    let stockInput = (<HTMLInputElement>document.getElementById("stockInput")).value;
+    let productStock: number = stockInput ? parseInt(stockInput, 10) : 1; // Default stock to 1 if input is empty or invalid.
+
+    if (isNaN(productStock)) {
+        productStock = 1; 
+    }
+
+    if (productName.trim() !== "") { 
+        products.add(productName); 
+        stock.set(productName, productStock); 
     } else {
-        alert("Please enter a valid number for stock.");
+        alert("Stock invalido");
     }
 }
+
 
 function eliminarProducte() {
     let productName: string = (<HTMLInputElement>document.getElementById("productoInput")).value;
@@ -57,4 +63,84 @@ function mostrarProducte() {
         p.textContent = `${product} - ${stock.get(product)}`;
         productsDiv.appendChild(p);
     });
+}
+/**
+ * Section de ventas
+ */
+function vendreProducte() {
+    let productName: string = (<HTMLInputElement>document.getElementById("vendreProducteInput")).value;
+    let priceInput: string = (<HTMLInputElement>document.getElementById("preuVendaInput")).value;
+    let price: number = parseFloat(priceInput);
+
+    // Validació de dades
+    if (!productName || !products.has(productName)) {
+        alert("Error: El producte no existeix.");
+        return;
+    }
+    if (isNaN(price) || price <= 0) {
+        alert("Error: Introdueix un preu vàlid.");
+        return;
+    }
+
+
+    let currentStock = stock.get(productName) || 0;
+    if (currentStock <= 0) {
+        alert("Error: No hi ha stock suficient.");
+        return;
+    }
+
+  
+    if (currentStock === 1) {
+        products.delete(productName);
+        stock.delete(productName);
+    } else {
+        stock.set(productName, currentStock - 1);
+    }
+
+   
+    if (!sales.has(productName)) {
+        sales.set(productName, 0);
+    }
+    sales.set(productName, (sales.get(productName) || 0) + price);
+
+    mostrarProducte(); 
+    mostrarVendes(); 
+
+function mostrarVendes() {
+    let salesDiv = document.getElementById("llistaVendes") || document.createElement('div');
+    salesDiv.innerHTML = '';
+    salesDiv.id = "llistaVendes";
+    document.body.appendChild(salesDiv);
+
+    sales.forEach((amount, product) => {
+        let p = document.createElement("p");
+        p.textContent = `${product}: €${amount.toFixed(2)}`;
+        salesDiv.appendChild(p);
+    });
+}
+}
+function mostrarResumVendes() {
+    let salesDiv = document.getElementById("resumVendes") || document.createElement('div');
+    salesDiv.innerHTML = '';
+    salesDiv.id = "resumVendes";
+    document.body.appendChild(salesDiv);
+
+ 
+    let sortedSales = Array.from(sales.entries()).sort((a, b) => b[1] - a[1]);
+
+ 
+    let totalBenefits = 0;
+    sortedSales.forEach(([product, amount]) => {
+        totalBenefits += amount;
+
+        let p = document.createElement("p");
+        p.textContent = `${product}: €${amount.toFixed(2)}`;
+        salesDiv.appendChild(p);
+    });
+
+
+    let totalDiv = document.createElement("p");
+    totalDiv.textContent = `Beneficis totals: €${totalBenefits.toFixed(2)}`;
+    totalDiv.style.fontWeight = "bold";
+    salesDiv.appendChild(totalDiv);
 }

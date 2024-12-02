@@ -25,6 +25,19 @@ const names: string[] = [
     "Raquel"
 ];
 
+const games: string[] = [
+    "Paco", 
+    "Roger", 
+    "Alberto", 
+    "Roberto",
+    "Carlos", 
+    "Sandra", 
+    "Javier", 
+    "Patricia", 
+    "Felipe", 
+    "Raquel"
+];
+
 const validateEmail = (email: string): boolean => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 
 function imprimir(names: string[], emails: string[]) {
@@ -43,12 +56,17 @@ function imprimir(names: string[], emails: string[]) {
 
     clients.appendChild(ul);
 }
+let item: string;
+
 function storage (item: string, prop?:string):string;
 function storage (item: string): string;
 
-
 function storage (item: string, prop?: string): string {
 
+    var storage = (<HTMLInputElement>document.getElementById("storage")).value;
+    
+    var splitStorage = storage.split(",") 
+    console.log(splitStorage)
     if (prop){
         return `Item: ${item}, Property: ${prop}`;
     }else {

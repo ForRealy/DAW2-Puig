@@ -24,6 +24,18 @@ const names = [
     "Felipe",
     "Raquel"
 ];
+const games = [
+    "Paco",
+    "Roger",
+    "Alberto",
+    "Roberto",
+    "Carlos",
+    "Sandra",
+    "Javier",
+    "Patricia",
+    "Felipe",
+    "Raquel"
+];
 const validateEmail = (email) => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 function imprimir(names, emails) {
     const clients = document.getElementById("clients");
@@ -38,7 +50,11 @@ function imprimir(names, emails) {
     });
     clients.appendChild(ul);
 }
+let item;
 function storage(item, prop) {
+    var storage = document.getElementById("storage").value;
+    var splitStorage = storage.split(",");
+    console.log(splitStorage);
     if (prop) {
         return `Item: ${item}, Property: ${prop}`;
     }

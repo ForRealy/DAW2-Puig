@@ -25,18 +25,23 @@ const names: string[] = [
     "Raquel"
 ];
 
-const games: string[] = [
-    "Paco", 
-    "Roger", 
-    "Alberto", 
-    "Roberto",
-    "Carlos", 
-    "Sandra", 
-    "Javier", 
-    "Patricia", 
-    "Felipe", 
-    "Raquel"
+interface Game {
+    item: string;
+    prop: string;
+}
+let games: Game[] = [
+    {item:"Elden Ring", prop: "PC"},
+    {item:"Wukong", prop: "PC"},
+    {item:"Astro Bot", prop: "PC"}
 ];
+
+let films: string[] = [
+    "Inception", 
+    "The Shawshank Redemption", 
+    "Parasite"
+];
+
+
 
 const validateEmail = (email: string): boolean => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
 
@@ -56,25 +61,68 @@ function imprimir(names: string[], emails: string[]) {
 
     clients.appendChild(ul);
 }
-let item: string;
 
-function storage (item: string, prop?:string):string;
-function storage (item: string): string;
 
-function storage (item: string, prop?: string): string {
 
-    var storage = (<HTMLInputElement>document.getElementById("storage")).value;
-    
-    var splitStorage = storage.split(",") 
-    console.log(splitStorage)
-    if (prop){
-        return `Item: ${item}, Property: ${prop}`;
+function getStorage(){
+var storageid = (<HTMLInputElement>document.getElementById("storage")).value;
+var splitStorage = storageid.split(",");
+
+    if (splitStorage[1]){
+        games.push({item: splitStorage[0], prop: splitStorage[0] });
     }else {
-        return `Item: ${item}`;
+        films.push(splitStorage[0])
     }
+}
+
+
+
+function storage(item: string, prop?: string): string;
+function storage(item: string): string;
+
+function storage(item: string, prop?: string): string {
+    const clients = document.getElementById("products")!;
+    const ul = document.createElement('ul');
+    
+    if (prop) {
+        const liElement = document.createElement('li');
+        liElement.textContent = `${item} - ${prop}`; 
+        ul.appendChild(liElement);
+    } else {
+        const liElement = document.createElement('li');
+        liElement.textContent = `${item}`; 
+        ul.appendChild(liElement);     
+    }
+    clients.appendChild(ul);
+    return item; 
+}
+const ButtonF = document.getElementById("ButtonF");
+const ButtonG = document.getElementById("ButtonG");
+const ButtonB = document.getElementById("ButtonB");
+
+function filter(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    console.log('You clicked:', target.id);
+}
+
+if (ButtonF) {
+    ButtonF.addEventListener('click', filter);
+}
+
+if (ButtonG) {
+    ButtonG.addEventListener('click', filter);
+}
+
+if (ButtonB) {
+    ButtonB.addEventListener('click', filter);
 }
 
 
 function charge() {
     imprimir(names, email);
+
+    for(let i = 0; i < games.length; i++) {
+        storage(games[i].item, games[i].prop);       
+     };
+     
 }

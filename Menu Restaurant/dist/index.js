@@ -1,62 +1,79 @@
 "use strict";
-const restaurantRest = {
-    name: 'CalPaco',
-    location: 'Barcelona',
-    menu: [
-        { name: "Paella", price: 15.99 },
-        { name: "Gazpacho", price: 8.5 },
-        { name: "Tortilla de patatas", price: 10.0 }
-    ]
-};
-function check(restaurant) {
-    const outputDiv = document.getElementById('restaurant');
-    const outputMenuDiv = document.getElementById('menu');
-    outputDiv.innerHTML = '';
-    outputMenuDiv.innerHTML = '';
-    if (restaurant) {
-        const { name, location, menu } = restaurant;
-        const nameElement = document.createElement('h1');
-        nameElement.textContent = name;
-        outputDiv.appendChild(nameElement);
-        const locationElement = document.createElement('p');
-        locationElement.textContent = location;
-        outputDiv.appendChild(locationElement);
-        const menuTitle = document.createElement('h2');
-        menuTitle.textContent = "Menu";
-        outputMenuDiv.appendChild(menuTitle);
-        const menuList = document.createElement('ul');
-        menu.forEach(item => {
-            const menuItem = document.createElement('li');
-            menuItem.textContent = `${item.name} - $${item.price.toFixed(2)}`;
-            menuList.appendChild(menuItem);
-        });
-        outputMenuDiv.appendChild(menuList);
-    }
-    else {
-        outputDiv.textContent = "El restaurant no està obert";
-    }
-}
-function addMenu() {
-    const menuPlato = document.getElementById("plato").value;
-    const menuPrecio = document.getElementById("precio").value;
-    // Check for empty fields
-    if (!menuPlato.trim() || !menuPrecio.trim()) {
-        alert("Introduce un plato y un precio validos");
+const clients = [];
+const orders = [];
+// Afegir un nou client
+function addClient() {
+    const clientNom = document.getElementById("clientNom").value.trim();
+    if (!clientNom) {
+        alert("Introdueix un nom vàlid per al client.");
         return;
     }
-    // Parse price to a number
-    const precioNumber = parseFloat(menuPrecio);
-    // Validate if the price is a valid number
-    if (isNaN(precioNumber) || precioNumber <= 0) {
-        alert("Introduce un precio valido");
-        return; // Exit the function if the price is invalid
+    if (clients.some(client => client.name === clientNom)) {
+        alert("El client ja existeix.");
+        return;
     }
-    // Push the valid menu item into the menu array
-    restaurantRest.menu.push({ name: menuPlato, price: precioNumber });
-    charge();
+    clients.push({ name: clientNom, orders: [] });
+    alert(`Client "${clientNom}" afegit correctament.`);
 }
-function charge() {
-    const suma = restaurantRest.menu.reduce((sum, item) => sum + item.price, 0);
-    console.log(suma);
-    check(restaurantRest);
+// Afegir una nova comanda
+function addOrder() {
+    const comandaNom = document.getElementById("comandaNom").value.trim();
+    const comandaPreu = parseFloat(document.getElementById("comandaPreu").value);
+    if (!comandaNom || isNaN(comandaPreu) || comandaPreu <= 0) {
+        alert("Introdueix una comanda vàlida amb un preu vàlid.");
+        return;
+    }
+    if (orders.some(order => order.name === comandaNom)) {
+        alert("La comanda ja existeix.");
+        return;
+    }
+    orders.push({ name: comandaNom, price: comandaPreu });
+    alert(`Comanda "${comandaNom}" afegida correctament.`);
+}
+// Assignar una comanda a un client
+function assignOrderToClient() {
+    const assignClient = document.getElementById("assignClient").value.trim();
+    const assignComanda = document.getElementById("assignComanda").value.trim();
+    const client = clients.find(c => c.name === assignClient);
+    const order = orders.find(o => o.name === assignComanda);
+    if (!client) {
+        alert("El client no existeix.");
+        return;
+    }
+    if (!order) {
+        alert("La comanda no existeix.");
+        return;
+    }
+    client.orders.push(order);
+    alert(`Comanda "${assignComanda}" assignada a "${assignClient}".`);
+}
+// Mostrar clients
+function showClients() {
+    const clientsOutput = document.getElementById("clientsOutput");
+    clientsOutput.innerHTML = clients.map(client => `<p>${client.name}</p>`).join("");
+}
+// Mostrar comandes
+function showOrders() {
+    const ordersOutput = document.getElementById("ordersOutput");
+    ordersOutput.innerHTML = orders.map(order => `<p>${order.name} - $${order.price.toFixed(2)}</p>`).join("");
+}
+// Mostrar comandes d’un client
+function showClientOrders() {
+    const clientName = document.getElementById("clientComandes").value.trim();
+    const clientOrdersOutput = document.getElementById("clientOrdersOutput");
+    const client = clients.find(c => c.name === clientName);
+    if (!client) {
+        clientOrdersOutput.innerHTML = `<p>El client "${clientName}" no existeix.</p>`;
+        return;
+    }
+    if (client.orders.length === 0) {
+        clientOrdersOutput.innerHTML = `<p>El client "${clientName}" no té comandes.</p>`;
+        return;
+    }
+    clientOrdersOutput.innerHTML = `
+        <h3>Comandes de ${clientName}</h3>
+        <ul>
+            ${client.orders.map(order => `<li>${order.name} - $${order.price.toFixed(2)}</li>`).join("")}
+        </ul>
+    `;
 }

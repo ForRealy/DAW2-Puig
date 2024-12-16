@@ -3,18 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="./dist/index.js"></script>
+    <title>Gestió de Clients i Comandes</title>
+    <script src="./dist/index.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        #output {
+            margin-top: 20px;
+        }
+    </style>
 </head>
-<body onload="charge()">
-    <div id="restaurant"></div>
+<body>
+    <h1>Gestió de Clients i Comandes</h1>
 
-    <div>
-        <input type="text" id="plato" placeholder="Nombre plato">
-        <input type="text" id="precio" placeholder="Precio plato">
-        <button onclick="addMenu()" id="platillo">Añadir Plato</button>
+    <div class="section">
+        <h2>Afegir Client</h2>
+        <input type="text" id="clientNom" placeholder="Nom del client">
+        <button onclick="addClient()">Afegir Client</button>
     </div>
 
-    <div id="menu"></div>
+    <div class="section">
+        <h2>Afegir Comanda</h2>
+        <input type="text" id="comandaNom" placeholder="Nom de la comanda">
+        <input type="text" id="comandaPreu" placeholder="Preu de la comanda">
+        <button onclick="addOrder()">Afegir Comanda</button>
+    </div>
+
+    <div class="section">
+        <h2>Assignar Comanda a Client</h2>
+        <input type="text" id="assignClient" placeholder="Nom del client">
+        <input type="text" id="assignComanda" placeholder="Nom de la comanda">
+        <button onclick="assignOrderToClient()">Assignar Comanda</button>
+    </div>
+
+    <div class="section">
+        <h2>Mostrar Clients</h2>
+        <button onclick="showClients()">Mostrar Clients</button>
+        <div id="clientsOutput"></div>
+    </div>
+
+    <div class="section">
+        <h2>Mostrar Comandes</h2>
+        <button onclick="showOrders()">Mostrar Comandes</button>
+        <div id="ordersOutput"></div>
+    </div>
+
+    <div class="section">
+        <h2>Mostrar Comandes d’un Client</h2>
+        <input type="text" id="clientComandes" placeholder="Nom del client">
+        <button onclick="showClientOrders()">Mostrar Comandes</button>
+        <div id="clientOrdersOutput"></div>
+    </div>
 </body>
 </html>
